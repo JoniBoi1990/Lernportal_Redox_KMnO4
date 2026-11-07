@@ -13,7 +13,7 @@ Dieses interaktive HTML5-Portal ermöglicht Schülerinnen und Schülern das voll
 1. **Interaktive Visualisierung aller Teilversuche:**
    - **Teil A (Petrischale):** A1 (Oxidation primärer vs. sekundärer Alkohole mit KOH) & A2 („Gummibärchen-Chamäleon“ mit NaOH).
    - **Teil B (pH-Abhängigkeit):** Reagenzgläser 1–4 mit Natriumsulfit bei variierendem pH (neutral, stark alkalisch, sauer) inklusive **Thymolphthalein-Zugabe** in RG 3.
-   - **Teil C (Saure Reaktionen):** Reagenzgläser 1–5 mit Fe²⁺, I⁻ (+ Heptan-Ausschüttelung), H₂O₂ (+ Glimmspanprobe), Ethanol (+ Geruchsprobe) und Methansäure (+ Kalkwasser-Trübung).
+   - **Teil C (Saure Reaktionen):** Reagenzgläser 1–5 mit Fe²⁺, I⁻ (+ Heptan-Ausschüttelung), H₂O₂ (+ Glimmspanprobe), Propan-1-ol (+ Geruchsprobe) und Methansäure (+ Kalkwasser-Trübung).
    - Die Beobachtungsschritte laufen zeitlich realistisch ab und tragen das Beobachtungsergebnis nach Abschluss automatisch in die Protokolltabellen ein.
 2. **Formative Tabellen-Auswertung mit Dropdowns & Direktfeedback:**
    - Insgesamt 44 interaktive Dropdown-Entscheidungen (Spezies, Oxidationszahlen, Reaktionsprodukte, Rollen als Oxidations-/Reduktionsmittel).

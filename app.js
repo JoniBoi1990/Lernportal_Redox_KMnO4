@@ -316,7 +316,7 @@ const UNITS = [
     ],
   },
   {
-    id: 'C4', bench: 'bench-c', kind: 'tube', title: 'RG 4', sub: 'Ethanol + H₂SO₄', init: { liq: COL.clear },
+    id: 'C4', bench: 'bench-c', kind: 'tube', title: 'RG 4', sub: 'Propan-1-ol + H₂SO₄', init: { liq: COL.clear },
     actions: [
       {
         key: 'main', label: 'Durchführen',
@@ -332,9 +332,9 @@ const UNITS = [
         key: 'follow', label: 'Erwärmen & Geruchsprobe', requires: 'main',
         steps: [
           { wait: 0, bath: true, text: 'Das RG wird im heißen Wasserbad leicht erwärmt …' },
-          { wait: 1600, odor: true, text: 'Vorsichtiges Zufächeln: stechend-fruchtiger Geruch (erinnert an grüne Äpfel).' },
+          { wait: 1600, odor: true, text: 'Vorsichtiges Zufächeln: stechender, leicht fruchtiger Geruch nach Propanal.' },
         ],
-        result: { 'nachweis:c4': 'Stechend-fruchtiger Geruch (nach grünen Äpfeln).' },
+        result: { 'nachweis:c4': 'Stechender, leicht fruchtiger Geruch (nach Propanal).' },
       },
     ],
   },
@@ -414,8 +414,8 @@ const OPT = {
     ['io3', 'IO3^- (Iodat-Ion)'],
     ['o2', 'O2 (Sauerstoff)'],
     ['h2o', 'H2O (Wasser)'],
-    ['ethanal', 'CH3CHO (Ethanal)'],
-    ['ethen', 'C2H4 (Ethen)'],
+    ['propanal', 'CH3-CH2-CHO (Propanal)'],
+    ['propen', 'C3H6 (Propen)'],
     ['co2', 'CO2 (Kohlenstoffdioxid)'],
     ['co', 'CO (Kohlenstoffmonoxid)'],
   ],
@@ -517,7 +517,7 @@ const TABLES = [
     id: 'c', mount: 'table-c', caption: 'Teil C: Redoxreaktionen von KMnO4 im sauren Milieu',
     cols: [['c1', 'RG 1'], ['c2', 'RG 2'], ['c3', 'RG 3'], ['c4', 'RG 4'], ['c5', 'RG 5']],
     rows: [
-      { key: 'vorlage', label: 'Vorgelegte Lösung (2 mL)', cells: { c1: g('FeSO4-Lsg.'), c2: g('KI-Lsg.'), c3: g('H2O2-Lsg.'), c4: g('Ethanol'), c5: g('Methansäure') } },
+      { key: 'vorlage', label: 'Vorgelegte Lösung (2 mL)', cells: { c1: g('FeSO4-Lsg.'), c2: g('KI-Lsg.'), c3: g('H2O2-Lsg.'), c4: g('Propan-1-ol'), c5: g('Methansäure') } },
       { key: 'saeure', label: 'Ansäuern', cells: Object.fromEntries(['c1', 'c2', 'c3', 'c4', 'c5'].map((c) => [c, g('6 Tropfen H2SO4')])) },
       { key: 'obs', label: 'Beobachtung bei Zugabe von KMnO4', cells: { c1: o(), c2: o(), c3: o(), c4: o(), c5: o() } },
       { key: 'nachweis', label: 'Spezifischer Nachweis', cells: { c1: g('—'), c2: o(), c3: o(), c4: o(), c5: o() } },
@@ -527,7 +527,7 @@ const TABLES = [
           c1: s('mn2', `Im sauren Milieu entsteht das nahezu farblose ${ce('Mn^2+')}. Die schwach gelbe Farbe stammt von den gebildeten ${ce('Fe^3+')}-Ionen.`, 'Die Lösung ist angesäuert. Welches Manganteilchen entsteht im Sauren?'),
           c2: s('mn2', `Auch hier entsteht ${ce('Mn^2+')}. Die gelbbraune Farbe stammt <strong>nicht</strong> vom Mangan, sondern vom gebildeten Iod (bzw. ${ce('I3^-')}).`, 'Vorsicht: Die braune Farbe stammt nicht von Braunstein – es fällt kein Niederschlag aus. Die Lösung ist sauer.'),
           c3: s('mn2', `Im Sauren wird ${ce('MnO4^-')} vollständig zum nahezu farblosen ${ce('Mn^2+')} reduziert.`, 'Die Lösung wird farblos und ist sauer.'),
-          c4: s('mn2', `Die Entfärbung zeigt die Bildung von ${ce('Mn^2+')} an – die Reaktion mit Ethanol ist lediglich langsamer.`, 'Die Lösung wird (langsam) farblos und ist sauer.'),
+          c4: s('mn2', `Die Entfärbung zeigt die Bildung von ${ce('Mn^2+')} an – die Reaktion mit Propan-1-ol ist lediglich langsamer.`, 'Die Lösung wird (langsam) farblos und ist sauer.'),
           c5: s('mn2', `Nach dem Erwärmen ist die Lösung farblos: Es ist ${ce('Mn^2+')} entstanden.`, 'Betrachte die Lösung nach dem Erwärmen.'),
         },
       },
@@ -543,7 +543,7 @@ const TABLES = [
           c1: s('fe3', `${ce('Fe^2+ -> Fe^3+ + e^-')}: Eisen(II) wird zu Eisen(III) oxidiert (schwach gelbe Lösung).`, 'Eisen(II)-Ionen sind das Reduktionsmittel. Ihre Oxidationszahl muss steigen.'),
           c2: s('i2', `${ce('2 I^- -> I2 + 2 e^-')}: Iodid wird zu Iod oxidiert. Iod löst sich gut in unpolarem Heptan und färbt es violett.`, 'Die violette Farbe der Heptan-Phase ist charakteristisch für einen Stoff, der sich in unpolaren Lösemitteln gut löst.'),
           c3: s('o2', `${ce('H2O2 + 2 H2O -> O2 + 2 H3O^+ + 2 e^-')}: Wasserstoffperoxid wirkt hier als Reduktionsmittel; das Gas ist Sauerstoff (positive Glimmspanprobe).`, 'Welches Gas lässt einen glimmenden Holzspan aufflammen?'),
-          c4: s('ethanal', `${ce('CH3-CH2-OH + 2 H2O -> CH3-CHO + 2 H3O^+ + 2 e^-')}: Ethanol (primärer Alkohol) wird zum Aldehyd Ethanal oxidiert (stechend-fruchtiger Geruch).`, 'Ethanol ist ein primärer Alkohol. Was entsteht bei seiner milden Oxidation?'),
+          c4: s('propanal', `${ce('CH3-CH2-CH2-OH + 2 H2O -> CH3-CH2-CHO + 2 H3O^+ + 2 e^-')}: Propan-1-ol (primärer Alkohol) wird zum Aldehyd Propanal oxidiert (stechender, leicht fruchtiger Geruch).`, 'Propan-1-ol ist ein primärer Alkohol. Was entsteht bei seiner milden Oxidation?'),
           c5: s('co2', `${ce('HCOOH + 2 H2O -> CO2 + 2 H3O^+ + 2 e^-')}: Methansäure wird zu Kohlenstoffdioxid oxidiert (Kalkwasser trübt sich durch ${ce('CaCO3')}).`, 'Welches Gas trübt Kalkwasser?'),
         },
       },
@@ -553,7 +553,7 @@ const TABLES = [
           c1: s('p3', 'Fe: +II → +III.', 'Die Oxidationszahl eines einatomigen Ions entspricht seiner Ladung.'),
           c2: s('z', 'I: −I → 0 (Elementmolekül).', 'Atome in Elementmolekülen haben die Oxidationszahl 0.'),
           c3: s('z', `O: −I (im Peroxid ${ce('H2O2')}) → 0 (im Elementmolekül ${ce('O2')}).`, 'Atome in Elementmolekülen haben die Oxidationszahl 0.'),
-          c4: s('p1', `C1: −I (in der Hydroxygruppe des Ethanols) → +I (in der Aldehydgruppe des Ethanals).`, 'Betrachte das Kohlenstoffatom der funktionellen Gruppe: Sauerstoff erhält die Bindungselektronen (−II), Wasserstoff gibt sie ab (+I).'),
+          c4: s('p1', `C1: −I (in der Hydroxygruppe des Propan-1-ols) → +I (in der Aldehydgruppe des Propanals).`, 'Betrachte das Kohlenstoffatom der funktionellen Gruppe: Sauerstoff erhält die Bindungselektronen (−II), Wasserstoff gibt sie ab (+I).'),
           c5: s('p4', `C: +II (in ${ce('HCOOH')}) → +IV (in ${ce('CO2')}).`, `In ${ce('CO2')} ist jedes O-Atom −II, das Molekül ist neutral.`),
         },
       },
@@ -584,10 +584,9 @@ const TASKS = [
           <tr><th scope="row">Fe</th><td data-label="Edukt">${ce('Fe^2+')}: +II</td><td data-label="Produkt">${ce('Fe^3+')}: +III</td><td data-label="Vorgang">Oxidation</td></tr>
           <tr><th scope="row">I</th><td data-label="Edukt">${ce('I^-')}: −I</td><td data-label="Produkt">${ce('I2')}: 0</td><td data-label="Vorgang">Oxidation</td></tr>
           <tr><th scope="row">O</th><td data-label="Edukt">${ce('H2O2')}: −I</td><td data-label="Produkt">${ce('O2')}: 0</td><td data-label="Vorgang">Oxidation</td></tr>
-          <tr><th scope="row">C (Propan-1-ol, C1)</th><td data-label="Edukt">−I</td><td data-label="Produkt">Propanal: +I (→ Propanoat: +III)</td><td data-label="Vorgang">Oxidation</td></tr>
+          <tr><th scope="row">C (Propan-1-ol, C1)</th><td data-label="Edukt">−I</td><td data-label="Produkt">Propanal: +I (im Sauren; im Alkalischen weiter zu Propanoat: +III)</td><td data-label="Vorgang">Oxidation</td></tr>
           <tr><th scope="row">C (Propan-2-ol, C2)</th><td data-label="Edukt">0</td><td data-label="Produkt">Propanon: +II</td><td data-label="Vorgang">Oxidation</td></tr>
           <tr><th scope="row">C (Glucose, C1)</th><td data-label="Edukt">+I (Aldehydgruppe)</td><td data-label="Produkt">Gluconat: +III (Carboxylatgruppe)</td><td data-label="Vorgang">Oxidation</td></tr>
-          <tr><th scope="row">C (Ethanol, C1)</th><td data-label="Edukt">−I</td><td data-label="Produkt">Ethanal: +I</td><td data-label="Vorgang">Oxidation</td></tr>
           <tr><th scope="row">C (Methansäure)</th><td data-label="Edukt">+II</td><td data-label="Produkt">${ce('CO2')}: +IV</td><td data-label="Vorgang">Oxidation</td></tr>
         </tbody>
       </table></div>
@@ -663,10 +662,10 @@ const TASKS = [
         ['Red.:', 'MnO4^- + 8 H3O^+ + 5 e^- -> Mn^2+ + 12 H2O   | ·2'],
         ['Redox:', '2 MnO4^- + 5 HCOOH + 6 H3O^+ -> 2 Mn^2+ + 5 CO2 + 14 H2O', true],
       ]))}
-      ${sub('Zusatz: Ethanol, sauer (RG 4)', eq([
-        ['Ox.:', 'CH3-CH2-OH + 2 H2O -> CH3-CHO + 2 H3O^+ + 2 e^-   | ·5'],
+      ${sub('Zusatz: Propan-1-ol, sauer (RG 4)', eq([
+        ['Ox.:', 'CH3-CH2-CH2-OH + 2 H2O -> CH3-CH2-CHO + 2 H3O^+ + 2 e^-   | ·5'],
         ['Red.:', 'MnO4^- + 8 H3O^+ + 5 e^- -> Mn^2+ + 12 H2O   | ·2'],
-        ['Redox:', '2 MnO4^- + 5 CH3-CH2-OH + 6 H3O^+ -> 2 Mn^2+ + 5 CH3-CHO + 14 H2O', true],
+        ['Redox:', '2 MnO4^- + 5 CH3-CH2-CH2-OH + 6 H3O^+ -> 2 Mn^2+ + 5 CH3-CH2-CHO + 14 H2O', true],
       ]))}`,
   },
   {
