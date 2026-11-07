@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Virtuelles Praktikum: Redoxreaktionen mit Kaliumpermanganat – Chemie KS LF</title>
+  <meta name="description" content="Interaktives Selbststudium zur Versuchsreihe Redoxreaktionen mit Kaliumpermanganat (Kursstufe Leistungsfach, Schule Birklehof).">
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <img src="assets/mint_logo.png" alt="MINT-Logo" class="logo-mint" width="120" height="30">
+      <div class="header-title">
+        <p class="kicker">Schule Birklehof · Chemie Kursstufe Leistungsfach</p>
+        <h1>Virtuelles Praktikum: Redoxreaktionen mit Kaliumpermanganat</h1>
+        <p class="subtitle">Wiederholung &amp; Vertiefung: Donator-Akzeptor-Prinzip, Oxidationszahlen &amp; Milieuabhängigkeit</p>
+      </div>
+      <img src="assets/birklehof_logo.png" alt="Wappen der Schule Birklehof" class="logo-crest" width="44" height="60">
+    </div>
+    <nav class="site-nav" aria-label="Abschnitte">
+      <a href="#start">Start</a>
+      <a href="#teil-a">Teil A</a>
+      <a href="#teil-b">Teil B</a>
+      <a href="#teil-c">Teil C</a>
+      <a href="#auswertung">Auswertung</a>
+      <div class="progress" aria-live="polite">
+        <span id="progress-text">0 / 0 richtig</span>
+        <progress id="progress-bar" max="1" value="0"></progress>
+        <button type="button" id="reset-all" class="btn btn-ghost">Alles zurücksetzen</button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section id="start" class="card">
+      <h2>So funktioniert das virtuelle Praktikum</h2>
+      <ol class="howto">
+        <li><strong>Versuch durchführen:</strong> Klicke bei jedem Reagenzglas bzw. jeder Petrischale auf <em>„Durchführen“</em>. Die Beobachtung wird animiert und anschließend automatisch in die Tabelle übernommen.</li>
+        <li><strong>Auswerten:</strong> Wähle in den übrigen Tabellenzeilen über die Auswahlmenüs die passende Manganverbindung, Oxidationszahl bzw. das Reaktionsprodukt. Du erhältst sofort eine Rückmeldung – nach zwei Fehlversuchen wird die Lösung erklärt.</li>
+        <li><strong>Aufgaben bearbeiten:</strong> Bearbeite die Aufgaben zur Auswertung zunächst selbstständig in deinem Heft bzw. Portfolio. Erst danach klappst du die ausführlichen Lösungen zur Selbstkontrolle auf.</li>
+      </ol>
+      <p class="muted">Deine Auswahl wird lokal in diesem Browser gespeichert. Du kannst also jederzeit unterbrechen und später weitermachen.</p>
+
+      <div class="callout callout-warn">
+        <h3>Sicherheit (im Präsenzpraktikum)</h3>
+        <p>Kaliumpermanganat (KMnO<sub>4</sub>) ist ein starkes Oxidationsmittel und hinterlässt braune Flecken auf Haut und Kleidung. Natronlauge, Kaliplätzchen (KOH) und Schwefelsäure wirken ätzend. Ethanol, Propanole und Heptan sind leicht entzündbar. <strong>Schutzbrille tragen!</strong> Manganhaltige Abfälle werden im Behälter für anorganische Schwermetallsalze, Heptan im Behälter für halogenfreie organische Lösemittel entsorgt.</p>
+        <p><strong>Die Versuche bitte nicht zu Hause nachmachen</strong> – dieses Portal ersetzt die Durchführung im Labor.</p>
+      </div>
+
+      <h3>Die Oxidationsstufen und Farben des Mangans</h3>
+      <div class="table-wrapper" tabindex="0" role="region" aria-labelledby="cap-mn">
+        <table class="data-table">
+          <caption id="cap-mn">Farbpalette des Mangans in wässriger Lösung</caption>
+          <thead>
+            <tr><th scope="col">Oxidationszahl</th><th scope="col">Teilchen</th><th scope="col">Farbe</th><th scope="col">Bemerkung</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">+VII</th><td data-label="Teilchen">MnO<sub>4</sub><sup>−</sup> (Permanganat-Ion)</td><td data-label="Farbe"><span class="swatch" style="--c: var(--mn7)"></span>tiefviolett</td><td data-label="Bemerkung">starkes Oxidationsmittel in allen Milieus</td></tr>
+            <tr><th scope="row">+VI</th><td data-label="Teilchen">MnO<sub>4</sub><sup>2−</sup> (Manganat(VI)-Ion)</td><td data-label="Farbe"><span class="swatch" style="--c: var(--mn6)"></span>smaragdgrün</td><td data-label="Bemerkung">nur in stark alkalischer Lösung beständig</td></tr>
+            <tr><th scope="row">+IV</th><td data-label="Teilchen">MnO<sub>2</sub> (Braunstein)</td><td data-label="Farbe"><span class="swatch" style="--c: var(--mn4)"></span>braun</td><td data-label="Bemerkung">schwerlöslicher, flockiger Niederschlag</td></tr>
+            <tr><th scope="row">+II</th><td data-label="Teilchen">Mn<sup>2+</sup> (Mangan(II)-Ion)</td><td data-label="Farbe"><span class="swatch" style="--c: var(--mn2)"></span>blassrosa / farblos</td><td data-label="Bemerkung">in verdünnter saurer Lösung nahezu farblos</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="teil-a" class="card">
+      <h2>Teil A: Halbmikro-Versuche in der Petrischale</h2>
+      <div class="procedure-grid">
+        <div class="procedure">
+          <h3>Versuch A1: Oxidation von Alkoholen</h3>
+          <p>In eine zweigeteilte Petrischale gibt man in beide Hälften je 2,5 mL KMnO<sub>4</sub>-Lösung (<i>c</i> = 0,005 mol/L) und je ein Kaliplätzchen (KOH). Anschließend tropft man in Hälfte 1 <strong>Propan-1-ol</strong>, in Hälfte 2 <strong>Propan-2-ol</strong> und mischt vorsichtig.</p>
+        </div>
+        <div class="procedure">
+          <h3>Versuch A2: Die „Gummibärchen-Reaktion“</h3>
+          <p>In eine Petrischale gibt man 20 mL KMnO<sub>4</sub>-Lösung (<i>c</i> = 0,005 mol/L) und 10 mL Natronlauge (<i>w</i> = 10 %), rührt kurz um und legt mittig ein <strong>Gummibärchen</strong> hinein. Die darin enthaltene Glucose (C<sub>6</sub>H<sub>12</sub>O<sub>6</sub>) reagiert mit dem Permanganat.</p>
+        </div>
+      </div>
+      <div class="lab-bench" id="bench-a"></div>
+      <div id="table-a"></div>
+    </section>
+
+    <section id="teil-b" class="card">
+      <h2>Teil B: Reduktion von Kaliumpermanganat bei unterschiedlichen pH-Werten</h2>
+      <div class="procedure">
+        <p><strong>Chemikalien:</strong> KMnO<sub>4</sub>-Lösung (<i>c</i> = 0,02 mol/L), Natriumsulfitlösung (<i>c</i> = 1 mol/L), Natronlauge (<i>c</i> = 2 mol/L), verdünnte Schwefelsäure (<i>c</i> = 1 mol/L), Thymolphthaleinlösung, demineralisiertes Wasser.</p>
+        <ol>
+          <li>Vier Reagenzgläser werden gemäß den ersten Tabellenzeilen befüllt (je 2 mL Vorlage, ggf. 6 Tropfen Zusatz).</li>
+          <li>In RG 1 und RG 2 gibt man je 2 Tropfen, in RG 3 und RG 4 je 4 Tropfen KMnO<sub>4</sub>-Lösung. Die Farbe in RG 2 wird <em>sofort</em> beobachtet.</li>
+          <li>Anschließend gibt man in RG 3 zwei Tropfen Thymolphthaleinlösung (Umschlagsbereich pH 9,3–10,5: farblos → blau).</li>
+        </ol>
+      </div>
+      <div class="lab-bench" id="bench-b"></div>
+      <div id="table-b"></div>
+    </section>
+
+    <section id="teil-c" class="card">
+      <h2>Teil C: Redoxreaktionen von KMnO<sub>4</sub> im sauren Milieu</h2>
+      <div class="procedure">
+        <p><strong>Chemikalien:</strong> KMnO<sub>4</sub>-Lösung (<i>c</i> = 0,02 mol/L), verdünnte Schwefelsäure (<i>c</i> = 1 mol/L), Eisen(II)-sulfatlösung (<i>c</i> = 0,02 mol/L), Kaliumiodidlösung (<i>c</i> = 0,02 mol/L), Wasserstoffperoxidlösung (<i>w</i> = 5 %), Ethanol, Methansäure (<i>w</i> = 25 %), Heptan, Kalkwasser, Holzspan.</p>
+        <ol>
+          <li>In RG 1 bis RG 5 werden je 2 mL Probelösung vorgelegt und mit 6 Tropfen verdünnter Schwefelsäure angesäuert.</li>
+          <li>Man gibt jeweils 4 Tropfen KMnO<sub>4</sub>-Lösung hinzu und beobachtet.</li>
+          <li>Anschließend folgt der spezifische Nachweis: RG 2 Heptan zugeben und schütteln · RG 3 Glimmspanprobe · RG 4 im Wasserbad erwärmen, Geruchsprobe · RG 5 erwärmen und entstehendes Gas in Kalkwasser leiten.</li>
+        </ol>
+      </div>
+      <div class="lab-bench" id="bench-c"></div>
+      <div id="table-c"></div>
+    </section>
+
+    <section id="auswertung" class="card">
+      <h2>Aufgaben zur Auswertung &amp; Wiederholung</h2>
+      <p class="muted">Bearbeite die Aufgaben zuerst selbstständig in deinem Heft bzw. Portfolio. Im Notizfeld kannst du Stichpunkte festhalten (lokal gespeichert). Klappe die Lösung erst danach auf.</p>
+      <div id="tasks"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Schule Birklehof · Fachschaft Chemie · Kursstufe Leistungsfach · Bildungsplan BW 3.4.7 Elektrochemie (2), (3)</p>
+  </footer>
+</body>
+</html>
